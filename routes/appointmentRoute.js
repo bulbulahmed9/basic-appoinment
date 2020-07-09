@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { makeAppointment, getAppointments } = require('../controllers/appointmentController')
 
 
 // route post /api/appointment
@@ -12,4 +13,7 @@ router.post('/api/appointment', makeAppointment)
 // desc get all appointments
 // access public
 
-router.get('/api/appointments', makeAppointment)
+router.get('/api/appointments', getAppointments)
+
+
+module.exports = router;

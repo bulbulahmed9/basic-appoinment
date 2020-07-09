@@ -19,6 +19,7 @@ app.use(morgan('dev'))
 
 // routes 
 app.use('/', require('./routes/doctorRoute'))
+app.use('/', require('./routes/appointmentRoute'))
 
 // Serve static assets in production
 /*
