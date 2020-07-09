@@ -1,0 +1,19 @@
+.doctor-nav{
+    background: #2d3436;
+    padding: 10px 0;
+}
+.doctor-nav .nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.doctor-nav .nav-item{
+    display: flex;
+    justify-content: space-between;
+}
+.doctor-nav a{
+    margin-right: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px !important;
+}

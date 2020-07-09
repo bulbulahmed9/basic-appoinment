@@ -6,8 +6,8 @@ require('dotenv').config()
 
 
 // connect DB
-// const connectDB = require('./config/db')
-// connectDB();
+const connectDB = require('./config/db')
+connectDB();
 
 
 // init middleware
@@ -18,7 +18,7 @@ app.use(morgan('dev'))
 
 
 // routes 
-
+app.use('/', require('./routes/doctorRoute'))
 
 // Serve static assets in production
 /*
