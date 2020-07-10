@@ -22,7 +22,7 @@ app.use('/', require('./routes/doctorRoute'))
 app.use('/', require('./routes/appointmentRoute'))
 
 // Serve static assets in production
-/*
+
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
     app.use(express.static('client/build'));
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-*/
+
 
 // Error Handling Middleware
 app.use((req, res, next) => {
