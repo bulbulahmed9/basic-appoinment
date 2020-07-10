@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { getInfo } from '../../services/actions/doctorAction'
 import Bigloader from '../../components/Loader/BigLoader.jsx'
 import DoctorNav from '../../components/DoctorNav/DoctorNav'
+import SmallLoader from '../../components/Loader/SmallLoader'
 import { Link } from 'react-router-dom'
 
 // addslot action
@@ -12,8 +13,8 @@ import { addSlot } from '../../services/actions/doctorAction'
 // date picker
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { toast } from 'react-toastify'
-import SmallLoader from '../../components/Loader/SmallLoader'
+
+
 
 // date format
 var dateFormat = require('dateformat');

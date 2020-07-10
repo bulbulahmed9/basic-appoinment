@@ -1,19 +1,35 @@
 const Appointment = require('../model/appointmentModel')
+const Doctor  = require('../model/doctorModel')
 
 const makeAppointment = async (req, res) => {
     try {
 
-        const { doctorName, patientName, phone, date, slot } = req.body
+        const {id, patientName, phone, date, slot } = req.body
 
-        if (!doctorName || !patientName || !phone || !date || !slot) {
+        if ( !patientName || !phone || !date || !slot || !id) {
             return res.json({
                 msg: "Please provide all fields"
             })
         }
 
-        const isExistAppointment = await Appointment.find({ doctorName, date: date.trim(), slot: slot.trim() })
+        const doctor = await Doctor.findById(id)
 
-        if (isExistAppointment) {
+        const isExistSlot = doctor.schedule.find(sch => sch.date === date.trim() && sch.slot === slot.trim())
+        
+
+        if (!isExistSlot) {
+            return res.json({
+                msg: "This schedule is not available by doctor"
+            })
+        }
+        // const currentDoctorName = doc
+
+
+        const isExistAppointment = await Appointment.find({ doctorName: doctor.name, date: date.trim(), slot: slot.trim() })
+        console.log(isExistAppointment);
+        
+
+        if (isExistAppointment.length) {
             return res.json({
                 msg: "This slot is already booked"
             })
@@ -29,7 +45,7 @@ const makeAppointment = async (req, res) => {
 
         await appointment.save()
 
-        res.status(302).json({
+        res.status(201).json({
             msg: "Appointment Successful"
         })
 
