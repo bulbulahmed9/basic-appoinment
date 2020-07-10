@@ -13,14 +13,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './screens/Homepage/Homepage.jsx'
 import Doctor from './screens/Doctor/Doctor';
 import Patient from './screens/Patient/Patient';
+import AddTime from './screens/Doctor/AddTime.jsx';
+
+// react toastify
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
+
 
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/doctor" component={Doctor} />
         <Route exact path="/patient" component={Patient} />
+        <Route exact path="/add-time" component={AddTime} />
       </Switch>
     </div>
   )

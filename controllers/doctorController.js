@@ -18,7 +18,7 @@ const addDoctor = async (req, res) => {
         })
 
         await doctor.save()
-        res.status(302).json({
+        res.status(201).json({
             msg: "Doctor info added"
         })
 
@@ -62,7 +62,9 @@ const addSlot = async (req, res) => {
 
         await doctor.save()
 
-        res.send(doctor)
+        res.status(201).json({
+            msg: "Slot Added"
+        })
     } catch (err) {
         console.log(err.message);
 

@@ -19,3 +19,8 @@ img{
 }
 
         /*COMMON CSS ENDED*/
+
+/* date picker input field  */
+.react-datepicker-wrapper{
+  display: block !important;
+}

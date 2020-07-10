@@ -1,0 +1,5 @@
+export const addDoctorURL = "/api/addDoctor"
+export const doctorInfoURL = "/api/doctorInfo"
+export const timeSlotURL = "/api/addSlot"
+export const makeAppointmentURL = "/api/appointment"
+export const getAppointmentsURL = "/api/appointments"
