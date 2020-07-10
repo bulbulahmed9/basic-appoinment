@@ -14,3 +14,7 @@ export const add_slot_loading = 'add_slot_loading'
 export const make_appointment_success = 'make_appointment_success'
 export const make_appointment_failed = 'make_appointment_failed'
 export const make_appointment_loading = 'make_appointment_loading'
+
+export const get_appointments_success = 'get_appointments_success'
+export const get_appointments_failed = 'get_appointments_failed'
+export const get_appointments_loading = 'get_appointments_loading'

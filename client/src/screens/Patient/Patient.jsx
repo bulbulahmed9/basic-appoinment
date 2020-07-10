@@ -66,8 +66,11 @@ const Patient = ({ getInfo, loading, infos, makeAppointment, make_appoint_loadin
         loading ? <BigLoader /> :
 
             <div className="container patient my-5">
+                <Link className="btn btn-success btn-sm mt-3" to="/">Back to Home</Link>
 
-                <h4>Make an appointment</h4>
+                {
+                    infos.length ? <h4>Make an appointment</h4> : <h4 className="text-danger">Currently no schedule is available by doctor</h4>
+                }
 
                 {/* Appointment Form  */}
                 <form onSubmit={submitHandler}>
@@ -78,6 +81,7 @@ const Patient = ({ getInfo, loading, infos, makeAppointment, make_appoint_loadin
                                 setForm({ ...form, doctorId: e.target.value })
                             }
                             }
+                            disabled={!infos.length && true}
                             className="form-control form-control-sm"
                         >
                             {
@@ -90,6 +94,7 @@ const Patient = ({ getInfo, loading, infos, makeAppointment, make_appoint_loadin
                     <div className="form-group">
                         <label>Patient Name</label>
                         <input
+                            disabled={!infos.length && true}
                             onChange={e => setForm({ ...form, patientName: e.target.value })}
                             type="text"
                             className="form-control form-control-sm"
@@ -100,6 +105,7 @@ const Patient = ({ getInfo, loading, infos, makeAppointment, make_appoint_loadin
                     <div className="form-group">
                         <label >Your phone number</label>
                         <input
+                            disabled={!infos.length && true}
                             onChange={e => setForm({ ...form, phone: e.target.value })}
                             type="number"
                             className="form-control form-control-sm"
@@ -110,6 +116,7 @@ const Patient = ({ getInfo, loading, infos, makeAppointment, make_appoint_loadin
                     <div className="form-group">
                         <label>Select Date(day/month/year)</label> <br />
                         <DatePicker
+                            disabled={!infos.length && true}
                             className="form-control form-control-sm"
                             dateFormat="dd/MM/yyyy"
                             selected={date}
@@ -121,7 +128,7 @@ const Patient = ({ getInfo, loading, infos, makeAppointment, make_appoint_loadin
                     <div className="form-group">
                         <label>Select Time Slot</label>
                         <select
-                            // disabled={!infos.length && true}
+                            disabled={!infos.length && true}
                             className="form-control form-control-sm"
                             onChange={e => setSlot(e.target.value)}
                         >
@@ -132,14 +139,12 @@ const Patient = ({ getInfo, loading, infos, makeAppointment, make_appoint_loadin
                             }
                         </select>
                     </div>
-                    <button type="submit" className="btn btn-success">Submit
+                    <button disabled={!infos.length && true} type="submit" className="btn btn-success">Submit
                     {make_appoint_loading && <SmallLoader />}
                     </button>
                 </form>
 
                 {/* Appointment Form  */}
-
-                <Link className="btn btn-success btn-sm mt-3" to="/">Back to Home</Link>
             </div>
     )
 }

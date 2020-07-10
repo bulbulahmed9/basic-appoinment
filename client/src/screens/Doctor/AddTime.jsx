@@ -59,7 +59,7 @@ const AddTime = ({ getInfo, loading, infos, addSlot, slot_loading }) => {
                 loading ? <Bigloader /> : <div className="container mt-3">
                     {
                         infos.length ? <h3>Add Time Slot</h3> : <div>
-                            <h5>Currently There is no doctor  information, so you can't add time slot</h5>
+                            <h5 className="text-danger">Currently There is no doctor  information, so you can't add time slot</h5>
                             <Link className="btn btn-primary btn-sm" to="/doctor">Add Doctor Information</Link>
                         </div>
                     }

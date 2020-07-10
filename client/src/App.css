@@ -17,6 +17,9 @@ a,a:hover{
 img{
   outline: 0;
 }
+a, button{
+  cursor: pointer;
+}
 
         /*COMMON CSS ENDED*/
 

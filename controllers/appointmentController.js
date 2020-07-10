@@ -36,7 +36,7 @@ const makeAppointment = async (req, res) => {
         }
 
         const appointment = new Appointment({
-            doctorName,
+            doctorName: doctor.name,
             patientName,
             phone,
             date,
@@ -66,7 +66,6 @@ const getAppointments = async (req, res) => {
 
     } catch (err) {
         console.log(err.message);
-
     }
 }
 
