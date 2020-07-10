@@ -4,13 +4,16 @@ import {
     loading,
     stop_loading,
     get_info_success,
-    get_info_failed
+    get_info_failed,
+    add_slot_success,
+    add_slot_failed,
+    add_slot_loading
 }
     from '../types'
 
 import { toast } from 'react-toastify'
 import axios from 'axios'
-import { doctorInfoURL, addDoctorURL } from '../../API/api'
+import { doctorInfoURL, addDoctorURL, timeSlotURL } from '../../API/api'
 
 
 // add doctor info
@@ -67,5 +70,36 @@ export const getInfo = () => async dispatch => {
         dispatch({
             type: get_info_failed
         })
+    }
+}
+
+// add slot time
+
+export const addSlot = ({ selectedDate, slot, id }) => async dispatch => {
+
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    const body = JSON.stringify({ date: selectedDate, slot, id })
+
+    try {
+
+        dispatch({
+            type: add_slot_loading
+        })
+        const res = await axios.put(timeSlotURL, body, config)
+
+        dispatch({
+            type: add_slot_success
+        })
+        toast(res.data.msg)
+
+    } catch (err) {
+        dispatch({ type: add_slot_failed })
+        console.log(err.message);
+        toast("Something went wrong")
     }
 }

@@ -40,8 +40,9 @@ const addSlot = async (req, res) => {
                 msg: "Please provide valid doctor id"
             })
         }
-
+        console.log(date, slot)
         const isExistSlot = doctor.schedule.find(sch => sch.date === date.trim() && sch.slot === slot.trim())
+        
 
         if (isExistSlot) {
             return res.json({

@@ -6,3 +6,7 @@ export const add_doctor_failed = 'add_doctor_failed'
 
 export const get_info_success = 'get_info_success'
 export const get_info_failed = 'get_info_failed'
+
+export const add_slot_success = 'add_slot_success'
+export const add_slot_failed = 'add_slot_failed'
+export const add_slot_loading = 'add_slot_loading'

@@ -6,15 +6,19 @@ import Bigloader from '../../components/Loader/BigLoader.jsx'
 import DoctorNav from '../../components/DoctorNav/DoctorNav'
 import { Link } from 'react-router-dom'
 
+// addslot action
+import { addSlot } from '../../services/actions/doctorAction'
+
 // date picker
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from 'react-toastify'
+import SmallLoader from '../../components/Loader/SmallLoader'
 
 // date format
 var dateFormat = require('dateformat');
 
-const AddTime = ({ getInfo, loading, infos }) => {
+const AddTime = ({ getInfo, loading, infos, addSlot, slot_loading }) => {
 
     // date picker state
     const [date, setDate] = useState(new Date())
@@ -38,6 +42,7 @@ const AddTime = ({ getInfo, loading, infos }) => {
         e.preventDefault()
         let id = infos.length && !doctorId ? infos[0]._id : doctorId
         const selectedDate = dateFormat(date, "dd/mm/yyyy")
+        addSlot({ selectedDate, slot, id })
         console.log(selectedDate, id, slot);
     }
 
@@ -94,7 +99,7 @@ const AddTime = ({ getInfo, loading, infos }) => {
                                 }
                             </select>
                         </div>
-                        <button disabled={!infos.length && true} type="submit" className="btn btn-success">Submit</button>
+                        <button disabled={!infos.length && true} type="submit" className="btn btn-success">Submit {slot_loading && <SmallLoader />} </button>
                     </form>
                 </div>
             }
@@ -106,11 +111,14 @@ AddTime.propTypes = {
     getInfo: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     infos: PropTypes.array.isRequired,
+    addSlot: PropTypes.func.isRequired,
+    slot_loading: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => ({
     loading: state.doctorReducer.loading,
-    infos: state.doctorReducer.doctor_info
+    infos: state.doctorReducer.doctor_info,
+    slot_loading: state.doctorReducer.slot_loading
 })
 
-export default connect(mapStateToProps, { getInfo })(AddTime)
+export default connect(mapStateToProps, { getInfo, addSlot })(AddTime)
