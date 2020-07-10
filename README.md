@@ -6,6 +6,8 @@
 <h4>Install dependencies</h4>
 cd basic-appointment and run npm install and cd basic-appointment/client, run npm install
 <br>
+<h4>Add env variable</h4>
+Create a .env file , and put dbUsername and dbPassword
 <h4>Serve</h4>
 npm run server for back end and npm start for client
 <br>
